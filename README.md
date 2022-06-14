@@ -9,7 +9,7 @@
   <h3 align="center">frames.cloudteam.me</h3>
 
   <p align="center">
-    Welcome to my awsome github page!
+    Nice description provide by berk!
     <br />
     <a href="https://frames.cloudteam.me">Website</a>
     ·
@@ -24,8 +24,8 @@
 
 ### Code languages:
 [![PHP](https://img.shields.io/badge/PHP-787CB5?style=for-the-badge&logo=PHP&logoColor=white)](https://github.com/cloudteamdev/frames.cloudteam.me/search?l=php)
-[![JS](https://img.shields.io/badge/JavaScript-F59120?&style=for-the-badge&logo=JAVASCRIPT&logoColor=white)](https://github.com/Dark-LYNN/Dark-LYNN/search?l=javascript)
-[![JS](https://img.shields.io/badge/CSS-264de4?&style=for-the-badge&logo=CSS3&logoColor=white)](https://github.com/Dark-LYNN/Dark-LYNN/search?l=CSS)
+[![JS](https://img.shields.io/badge/JavaScript-F59120?&style=for-the-badge&logo=JAVASCRIPT&logoColor=white)]([https://github.com/Dark-LYNN/Dark-LYNN/search](https://github.com/cloudteamdev/frames.cloudteam.me/search)?l=javascript)
+[![JS](https://img.shields.io/badge/CSS-264de4?&style=for-the-badge&logo=CSS3&logoColor=white)]([https://github.com/Dark-LYNN/Dark-LYNN/search](https://github.com/cloudteamdev/frames.cloudteam.me/search)?l=CSS)
 
 <!--⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⣿⡟⠙⠛⠋⠩⠭⣉⡛⢛⠫⠭⠄⠒⠄⠄⠄⠈⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿
