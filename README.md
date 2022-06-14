@@ -20,7 +20,7 @@
 </p>
 
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-[![Discord](https://img.shields.io/discord/738381353921544282.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/gTuabejrGb)
+[![Discord](https://img.shields.io/discord/934070836619518082.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/gTuabejrGb)
 
 ### Code languages:
 [![PHP](https://img.shields.io/badge/PHP-787CB5?style=for-the-badge&logo=PHP&logoColor=white)](https://github.com/cloudteamdev/frames.cloudteam.me/search?l=php)
