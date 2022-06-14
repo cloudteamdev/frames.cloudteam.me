@@ -20,6 +20,7 @@
         <meta name="copyright" content="CloudTeam © <?php echo date("Y"); ?>" />
 <!-- Extra -->
 <meta property="og:image" content="codes.cloudteam.me/assets/img/banner.png" />
+<!-- =========================== ^ To-Fix ===========================  -->
 <!-- Spiders indexation -->
 <meta name="robots" content= "index, follow">
 <!-- Favicons -->
@@ -34,6 +35,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- HTML2Canvas v1.4.1 Minified -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" integrity="sha256-6H5VB5QyLldKH9oMFUmjxw2uWpPZETQXpCkBaDjquMs=" crossorigin="anonymous"></script>
+<!-- Adsense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5711390134813679"
+     crossorigin="anonymous"></script>
 <!-- Import Styling -->
 <link rel="stylesheet" href="./assets/css/style.css">
 <!-- No Script -->
