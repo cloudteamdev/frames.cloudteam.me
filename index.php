@@ -65,7 +65,7 @@
 <div class="mx-auto" id="holder" style="width: 350px; height: 350px;">
 <div class="frame-view mx-auto" style="position: relative; left: 0; top: 0;">
  <div>
-<img src="https://cdn.discordapp.com/avatars/551786741296791562/6f1287afbd08f212530ecfda48aad9a1.png?size=2048" id="user-avatar" alt="Frame Preview" class="image-preview">
+<img src="https://media.discordapp.net/attachments/935221163855061012/954104380968280094/new_cloud_logo_blue.png" id="user-avatar" alt="Frame Preview" class="image-preview">
 <img src="https://i.imgur.com/0cn29ow.png" class="image-overlay" id="overlay-preview">
 <img src="https://i.imgur.com/ayFFzNr.png" class="image-icon" id="icon-preview">
  </div>
