@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/cloudteamdev/frames.cloudteam.me/">
-    <img src="https://codes.cloudteam.me/assets/favicon/apple-icon-180x180.png" alt="Logo" width="80" height="80">
+    <img src="https://codes.cloudteam.me/assets/favicon/apple-icon-180x180.png" alt="Logo" width="80" height="80" style="border-radius: 4px">
   </a>
 
   <h3 align="center">frames.cloudteam.me</h3>
@@ -24,10 +24,10 @@
 
 ### Code languages:
 [![PHP](https://img.shields.io/badge/PHP-787CB5?style=for-the-badge&logo=PHP&logoColor=white)](https://github.com/cloudteamdev/frames.cloudteam.me/search?l=php)
-[![JS](https://img.shields.io/badge/JavaScript-F59120?&style=for-the-badge&logo=JAVASCRIPT&logoColor=white)](https://github.com/Dark-LYNN/Dark-LYNN/search?l=javascript)
-[![JS](https://img.shields.io/badge/CSS-264de4?&style=for-the-badge&logo=CSS3&logoColor=white)](https://github.com/Dark-LYNN/Dark-LYNN/search?l=CSS)
+[![JS](https://img.shields.io/badge/JavaScript-F59120?&style=for-the-badge&logo=JAVASCRIPT&logoColor=white)](https://github.com/cloudteamdev/frames.cloudteam.me/search?l=javascript)
+[![JS](https://img.shields.io/badge/CSS-264de4?&style=for-the-badge&logo=CSS3&logoColor=white)](https://github.com/cloudteamdev/frames.cloudteam.me/search?l=CSS)
 
-<!--⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+<!-- readme.md by https://github.com/Dark-LYNN
 ⣿⡟⠙⠛⠋⠩⠭⣉⡛⢛⠫⠭⠄⠒⠄⠄⠄⠈⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⡇⠄⠄⠄⠄⣠⠖⠋⣀⡤⠄⠒⠄⠄⠄⠄⠄⠄⠄⠄⠄⣈⡭⠭⠄⠄⠄⠉⠙
 ⣿⡇⠄⠄⢀⣞⣡⠴⠚⠁⠄⠄⢀⠠⠄⠄⠄⠄⠄⠄⠄⠉⠄⠄⠄⠄⠄⠄⠄⠄
