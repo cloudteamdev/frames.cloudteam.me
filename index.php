@@ -179,6 +179,22 @@
 <img id="social-discord-icon" onclick="icon(this.id);" src="https://i.imgur.com/0Of83HU.png" width="72px">
 </div>
 
+<div class="option but-dark d-inline-block">
+<img id="social-twitch-icon" onclick="icon(this.id);" src="https://i.imgur.com/CH33GGZ.png" width="72px">
+</div>
+
+<div class="option but-dark d-inline-block">
+<img id="social-twitch-alt-icon" onclick="icon(this.id);" src="https://i.imgur.com/X1neTGU.png" width="72px">
+</div>
+
+<div class="option but-dark d-inline-block">
+<img id="social-twitter-icon" onclick="icon(this.id);" src="https://i.imgur.com/xN2syHS.png" width="72px">
+</div>
+
+<div class="option but-dark d-inline-block">
+<img id="social-youtube-icon" onclick="icon(this.id);" src="https://i.imgur.com/hbPe9p1.png" width="72px">
+</div>
+
 </div>
 
 <!-- Type: Pets -->
@@ -226,7 +242,35 @@ Pets soon!
 </div>
 
 <hr>
-<h6><i class="fa-solid fa-paw"></i> Animals</h6>
+
+<h6>Border-Only</h6>
+
+<div class="option d-inline-block">
+<img id="blue-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/aLcwSs1.png" width="72px">
+</div>
+
+<div class="option d-inline-block">
+<img id="red-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/9WfT828.png" width="72px">
+</div>
+
+<div class="option d-inline-block">
+<img id="purple-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/rKmHJwz.png" width="72px">
+</div>
+
+<div class="option d-inline-block">
+<img id="cyan-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/JCgXYpY.png" width="72px">
+</div>
+
+<div class="option d-inline-block">
+<img id="gray-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/ZdgyoWi.png" width="72px">
+</div>
+
+<div class="option d-inline-block">
+<img id="black-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/rGKcbKV.png" width="72px">
+</div>
+
+<hr>
+<h6><i class="fa-solid fa-paw"></i> Animals <span class="subttl">Recommended without icons!</span></h6>
 <div class="option d-inline-block">
 <img id="bee-overlay" onclick="select(this.id);" src="https://i.imgur.com/HgNl9Rp.png" width="72px">
 </div>
