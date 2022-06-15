@@ -9,8 +9,8 @@
   <h3 align="center">frames.cloudteam.me</h3>
 
   <p align="center">
-    Welcome to my awsome github page!
-    <br />
+    Incredible Frames, by CloudTeam and awesome contributors ^^
+    <br/>
     <a href="https://frames.cloudteam.me">Website</a>
     ·
     <a href="https://discord.gg/gTuabejrGb/">Discord</a>
