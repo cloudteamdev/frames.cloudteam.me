@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/cloudteamdev/frames.cloudteam.me/">
-    <img src="https://codes.cloudteam.me/assets/favicon/apple-icon-180x180.png" alt="Logo" width="80" height="80" style="border-radius: 4px">
+    <img src="https://codes.cloudteam.me/assets/favicon/apple-icon-180x180.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">frames.cloudteam.me</h3>
