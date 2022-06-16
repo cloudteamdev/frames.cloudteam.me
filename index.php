@@ -33,13 +33,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- JQuery v3.6.0 Minified -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!-- HTML2Canvas v1.4.1 Minified -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" integrity="sha256-6H5VB5QyLldKH9oMFUmjxw2uWpPZETQXpCkBaDjquMs=" crossorigin="anonymous"></script>
+<!-- DOM to image v2.6.0 Minified -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Adsense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5711390134813679"
      crossorigin="anonymous"></script>
 <!-- Import Styling -->
-<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/style.css?v=1">
 <!-- No Script -->
 <noscript>Your browser does not support Javascript or has it blocked for this page, you may face lot of errors due to this, please enable it!</noscript>
 </head>
@@ -62,15 +62,22 @@
 <!-- Frame Previewer -->
     <div class="col-md-5 frame-preview">
     <h6 class="text-center"><i class="fa-solid fa-icons"></i> Real-Time Frame Preview</h6>
-<div class="mx-auto" id="holder" style="width: 350px; height: 350px;">
-<div class="frame-view mx-auto" style="position: relative; left: 0; top: 0;">
+<div class="mx-auto" style="width: 350px; height: 350px;">
+<div class="frame-view mx-auto" id="holder" style="position: relative; left: 0; top: 0;">
  <div>
-<img src="https://media.discordapp.net/attachments/935221163855061012/954104380968280094/new_cloud_logo_blue.png" id="user-avatar" alt="Frame Preview" class="image-preview">
+<img src="https://cdn.discordapp.com/attachments/935221163855061012/954104326425550919/new_cloud_logo_black.png" id="user-avatar" alt="Frame Preview" class="image-preview">
 <img src="https://i.imgur.com/0cn29ow.png" class="image-overlay" id="overlay-preview">
 <img src="https://i.imgur.com/ayFFzNr.png" class="image-icon" id="icon-preview">
  </div>
 </div>
 </div>
+
+<style>
+.image-preview {
+max-height: 335px;
+min-height: 335px;
+}
+</style>
 
 <div class="download-history mt-2 mx-auto">
 <h6 id="downloads" style="display: none;">Recent Downloads <span class="subttl">Your Frames download(s) this session!</span></h6><br>
@@ -109,6 +116,10 @@
 <!-- Type: Icons -->
 <div class="icons-types d-none" id="col-icons">
 
+<div id="icon-settings" style="display: none;">
+<h6><i class="fa-solid fa-circle-half-stroke"></i> Change to <span id="current-icons">Black</span> icons <span class="subttl">Change the icons color to black/white</span></h6>
+<a onclick="invert();" class="btn btn-primary mb-1" id="invert">Click to change!</a>
+</div>
 <h6>Default <span class="subttl">Discord Badges and Normal Icons Set</span></h6>
 <div class="option d-inline-block">
 <img id="none" onclick="icon(this.id);" src="https://i.imgur.com/ayFFzNr.png" width="72px">
@@ -117,6 +128,7 @@
 <div class="option but-dark d-inline-block">
 <img id="developer-icon" onclick="icon(this.id);" src="https://i.imgur.com/wmBSZ29.png" width="72px">
 </div>
+
 
 <div class="option but-dark d-inline-block">
 <img id="balance-icon" onclick="icon(this.id);" src="https://i.imgur.com/Rz8FinM.png" width="72px">
@@ -203,66 +215,62 @@ Pets soon!
 </div>
 
 <!-- Type: Overlay Frames -->
-<div class="overlay-types" id="col-overlay"> 
+<div class="overlay-types" id="col-overlay">
+ <div id="overlay-settings" style="display: none;"> 
+<h6><i class="fa-solid fa-palette"></i> Overlay Color <span class="subttl">Hue color!</span></h6>
+<div class="slider-container">
+  <input type="range" min="0" max="360" value="0" class="slider" id="range-hue" oninput="range(this.id)">
+</div>
+
+<h6><i class="fa-solid fa-brush"></i> Overlay Saturation <span class="subttl">Saturation!</span></h6>
+<div class="slider-container">
+  <input type="range" min="0" max="200" value="100" class="slider" id="range-saturation" oninput="range(this.id)">
+</div>
+ </div>
+ 
 <h6>Default <span class="subttl">Recommended with icons!</span></h6>
 <div class="option d-inline-block">
 <img id="none" onclick="select(this.id);" src="https://i.imgur.com/ayFFzNr.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="blue-overlay" onclick="select(this.id);" src="https://i.imgur.com/LtqRiov.png" width="72px">
+<img id="normal-overlay" onclick="select(this.id);" src="https://i.imgur.com/xgxjZv4.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="orange-overlay" onclick="select(this.id);" src="https://i.imgur.com/3GCjFV7.png" width="72px">
+<img id="normal-black-overlay" onclick="select(this.id);" src="https://i.imgur.com/WciiqPm.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="green-overlay" onclick="select(this.id);" src="https://i.imgur.com/AhoAvUO.png" width="72px">
+<img id="hexa-overlay" onclick="select(this.id);" src="https://i.imgur.com/YsaWKua.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="lightblue-overlay" onclick="select(this.id);" src="https://i.imgur.com/56H3XcH.png" width="72px">
+<img id="rectangle-overlay" onclick="select(this.id);" src="https://i.imgur.com/I6Fn9Rx.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="purple-overlay" onclick="select(this.id);" src="https://i.imgur.com/wKeXAzj.png" width="72px">
+<img id="dragon-overlay" onclick="select(this.id);" src="https://i.imgur.com/bOdYvrZ.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="red-overlay" onclick="select(this.id);" src="https://i.imgur.com/pjNQ4S9.png" width="72px">
+<img id="tech-overlay" onclick="select(this.id);" src="https://i.imgur.com/6VjSVzK.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="black-overlay" onclick="select(this.id);" src="https://i.imgur.com/WciiqPm.png" width="72px">
+<img id="square-overlay" onclick="select(this.id);" src="https://i.imgur.com/ZVtJedS.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="special-tech-overlay" onclick="select(this.id);" src="https://i.imgur.com/mMZZUg9.png" width="72px">
-</div>
-
-<hr>
-
-<h6>Border-Only</h6>
-
-<div class="option d-inline-block">
-<img id="blue-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/aLcwSs1.png" width="72px">
+<img id="tech-2-overlay" onclick="select(this.id);" src="https://i.imgur.com/mMZZUg9.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="red-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/9WfT828.png" width="72px">
+<img id="border-only-overlay" onclick="select(this.id);" src="https://i.imgur.com/TNCR4Wu.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
-<img id="purple-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/rKmHJwz.png" width="72px">
-</div>
-
-<div class="option d-inline-block">
-<img id="cyan-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/JCgXYpY.png" width="72px">
-</div>
-
-<div class="option d-inline-block">
-<img id="gray-border-overlay" onclick="select(this.id);" src="https://i.imgur.com/ZdgyoWi.png" width="72px">
+<img id="border-danger-overlay" onclick="select(this.id);" src="https://i.imgur.com/oCOSYcA.png" width="72px">
 </div>
 
 <div class="option d-inline-block">
@@ -270,6 +278,7 @@ Pets soon!
 </div>
 
 <hr>
+
 <h6><i class="fa-solid fa-paw"></i> Animals <span class="subttl">Recommended without icons!</span></h6>
 <div class="option d-inline-block">
 <img id="bee-overlay" onclick="select(this.id);" src="https://i.imgur.com/HgNl9Rp.png" width="72px">
@@ -310,7 +319,7 @@ Pets soon!
   </div>
  </div>
  
-<script src="./assets/js/script.js"></script>
+<script src="./assets/js/script.js?v=1"></script>
 </body>
 <!-- Starts Footer -->
 <footer class="basic-animation" style="display: none;" id="footer-info">
