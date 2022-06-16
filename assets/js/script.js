@@ -39,6 +39,25 @@ var loadFile = function(event) {
 };
 
 $("#btn_dwl").on('click', function () {
+var node = document.getElementById('holder');
+ 
+domtoimage.toPng(node)
+    .then(function (dataUrl) {
+        var a = $("<a>").attr("href", dataUrl).attr("download", "overlay.png").appendTo("body");
+        a[0].click();
+        a.remove();
+        var img = new Image();
+        img.src = dataUrl;
+        document.getElementById("downloads").style.display = "initial";
+        document.getElementById("preview-list").appendChild(img);
+    })
+    .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+    });
+});
+
+/* old button using html2canvas
+$("#btn_dwl").on('click', function () {
         document.getElementById("downloads").style.display = "initial";
 		html2canvas(document.getElementById("holder"),		{
 			allowTaint: false,
@@ -52,22 +71,41 @@ $("#btn_dwl").on('click', function () {
 			anchorTag.click();
 		});
 });
-
+*/
 function select(id) {
+const colorsettings = document.getElementById("overlay-settings"); 
 const option = document.getElementById(id);
 const overlay = option.src;
 const overpreview = document.getElementById("overlay-preview");
+colorsettings.style.display = "initial";
 overpreview.src = overlay;
 }
 function icon(id) {
+const iconsettings = document.getElementById("icon-settings"); 
 const option = document.getElementById(id);
 const overlay = option.src;
 const overpreview = document.getElementById("icon-preview");
+iconsettings.style.display = "initial";
 overpreview.src = overlay;
 }
+function range(id) {
+hue = document.getElementById("range-hue").value;
+sat = document.getElementById("range-saturation").value;
+document.getElementById("overlay-preview").style.filter = "hue-rotate("+hue+"deg) "+" saturate("+sat+"%)";
+}
 
+function invert() {
+icon_preview = document.getElementById("icon-preview");
+inverted = document.getElementById("current-icons");
+if(icon_preview.style.filter == "invert(100%)") {
+icon_preview.style.filter = "invert(0%)";
+inverted.innerText = "Black";
+  } else {
+icon_preview.style.filter = "invert(100%)";
+inverted.innerText = "White";
+       }
+}
 function ui(id) {
-  // should change this to classlist toggle
 const selection = document.getElementById(id);
 selection.className = "nav-link active";
 
