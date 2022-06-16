@@ -56,7 +56,7 @@ background-color: #101010 !important;
 justify-content: center;
 align-items: center;
 }
-.download-history canvas {
+.download-history img {
 width: 100px !important;
 height: 100px !important;
 border: 1px solid black;
@@ -71,7 +71,36 @@ padding: 5px;
 justify-content: center;
 align-items: center;
 }
+.slider-container {
+  width: 100%;
+}
 
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #0d6efd;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #0d6efd;
+  cursor: pointer;
+}
 #holder img {
     width: 100%;
     height: 100%;
