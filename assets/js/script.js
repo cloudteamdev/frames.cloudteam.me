@@ -1,46 +1,39 @@
-function updater(val) {
-warning = document.getElementById("warning");
-extra = document.getElementById("extra");
-if(check(val)){
-console.log("Valid image, processing...")
-warning.style.border = "2px solid yellow"
-document.getElementById("user-avatar").src = val;
-warning.style.border = "2px solid green"
-} else {
-console.error("invalid image, couldn't continue.");
-warning.style.border = "2px solid red"
+/*Date Functions*/
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
+/*Logs & Logs Counter Elements*/
+var logs = document.getElementById("logs-ping");
+var logs_counter = document.getElementById("logs-ping-counter");
+/*Mark pings as read*/        
+function read() {
+    logs.style.display = "none";
+    logs_counter.innerText = 0;
 }
-if(val.includes(".gif")){
-    console.warn("Unsupported image type GIF (animated) detected.")
-    extra.display = "initial"
-    extra.innerText = "Not currently supporting GIFs, you still can download the frame, but it won't be animated."
+/*Generates a new ping*/
+function ping_new() {
+        logs.style.display = "initial";
+        if(logs_counter.value > 99) { logs_counter.innerText = "99+" } else {
+        logs_counter.innerText = Number(logs_counter.innerText) + 1;
+        }
+}
+/*Console and Tab Error/Success Logging*/
+function weblog(type, msg){
+var log = document.getElementById("error-log");
+if(type == "error") {
+log.innerHTML = "<hr><p class='text-danger sm-t'>[ "+dateTime+" ] <i class='fa-solid fa-bug'></i> "+ msg +"<p>";
+console.error(msg);
+ping_new();
+  }
+if(type == "success") {
+log.innerHTML = "<hr><p class='text-success sm-t'>[ "+dateTime+" ] <i class='fa-solid fa-bug-slash'></i> "+ msg +"<p>";
+console.info(msg);
   }
 }
-const check = (url) => {
-  if (typeof url !== 'string') {
-    return false;
-  }
-  return (url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp|webp|svg)(\?(.*))?$/gmi) !== null);
-}
-var load;
-function loader() {
-  load = setTimeout(loaded, 3000);
-}
-function loaded() {
-  document.getElementById("spinner").style.display = "none";
-  document.getElementById("spinner-parent").style.display = "none";
-  document.getElementById("content").style.display = "block";
-  document.getElementById("header-info").style.display = "initial";
-  document.getElementById("footer-info").style.display = "initial";
-}
-var loadFile = function(event) {
-	var image = document.getElementById('user-avatar');
-	image.src = URL.createObjectURL(event.target.files[0]);
-};
-
+/*Download Button, Dom2Image*/
 $("#btn_dwl").on('click', function () {
 var node = document.getElementById('holder');
- 
 domtoimage.toPng(node)
     .then(function (dataUrl) {
         var a = $("<a>").attr("href", dataUrl).attr("download", "overlay.png").appendTo("body");
@@ -48,54 +41,32 @@ domtoimage.toPng(node)
         a.remove();
         var img = new Image();
         img.src = dataUrl;
+        ping_new();
+        weblog("success", "Success! You successfully downloaded the overlay without detected errors.")
         document.getElementById("downloads").style.display = "initial";
         document.getElementById("preview-list").appendChild(img);
     })
     .catch(function (error) {
-        console.error('oops, something went wrong!', error);
+        weblog("error", "Sorry, something went wrong! Try using the 'Device Upload' option to upload your avatar instead of the URL upload.");
     });
 });
-
-/* old button using html2canvas
-$("#btn_dwl").on('click', function () {
-        document.getElementById("downloads").style.display = "initial";
-		html2canvas(document.getElementById("holder"),		{
-			allowTaint: false,
-			useCORS: true
-		}).then(function (canvas) {
-			var anchorTag = document.createElement("a");
-			document.body.appendChild(anchorTag);
-			document.getElementById("preview-list").appendChild(canvas);			anchorTag.download = "overlay.png";
-			anchorTag.href = canvas.toDataURL();
-			anchorTag.target = '_blank';
-			anchorTag.click();
-		});
-});
-*/
-function select(id) {
-const colorsettings = document.getElementById("overlay-settings"); 
-const option = document.getElementById(id);
-const overlay = option.src;
-const overpreview = document.getElementById("overlay-preview");
-colorsettings.style.display = "initial";
-overpreview.src = overlay;
+/*Select overlay/icon*/
+function select(type, id, source) {
+if(type == "overlay"){document.getElementById("overlay-holder").src = source; const colorsettings = document.getElementById("overlay-settings"); colorsettings.style.display = "initial";}
+if(type == "icon"){document.getElementById("icon-holder").src = source; const iconsettings = document.getElementById("icon-settings"); iconsettings.style.display = "initial";}
 }
-function icon(id) {
-const iconsettings = document.getElementById("icon-settings"); 
-const option = document.getElementById(id);
-const overlay = option.src;
-const overpreview = document.getElementById("icon-preview");
-iconsettings.style.display = "initial";
-overpreview.src = overlay;
-}
+/*Slider Color Range*/
 function range(id) {
-hue = document.getElementById("range-hue").value;
-sat = document.getElementById("range-saturation").value;
-document.getElementById("overlay-preview").style.filter = "hue-rotate("+hue+"deg) "+" saturate("+sat+"%)";
+const hue = document.getElementById("range-hue");
+const sat = document.getElementById("range-saturation");
+const holder = document.getElementById("overlay-holder");
+if(id == "reset") { hue.value = 0; sat.value = 100; range("range-hue"); range("range-saturation") } else {
+holder.style.filter = "hue-rotate("+hue.value+"deg) "+" saturate("+sat.value+"%)";
 }
-
+}
+/*Icons color invertion*/
 function invert() {
-icon_preview = document.getElementById("icon-preview");
+icon_preview = document.getElementById("icon-holder");
 inverted = document.getElementById("current-icons");
 if(icon_preview.style.filter == "invert(100%)") {
 icon_preview.style.filter = "invert(0%)";
@@ -105,37 +76,61 @@ icon_preview.style.filter = "invert(100%)";
 inverted.innerText = "White";
        }
 }
-function ui(id) {
-const selection = document.getElementById(id);
-selection.className = "nav-link active";
-
-const ui_overlay = document.getElementById("ui-overlay");
- const col_overlay = document.getElementById("col-overlay");
- 
-const ui_icons = document.getElementById("ui-icons");
- const col_icons = document.getElementById("col-icons");
- 
-const ui_pets = document.getElementById("ui-pets");
- const col_pets = document.getElementById("col-pets");
-if(id == "ui-icons"){
-    ui_overlay.className = "nav-link";
-    col_overlay.className = "overlay-types d-none";
-    ui_pets.className = "nav-link";
-    col_pets.className = "pets-types d-none";
-    col_icons.className = "icons-types";
-  }
-if(id == "ui-overlay"){
-    ui_icons.className = "nav-link";
-    col_icons.className = "icons-types d-none";
-    ui_pets.className = "nav-link";
-    col_pets.className = "pets-types d-none";
-    col_overlay.className = "overlay-types";
-  }
-if(id == "ui-pets"){
-    ui_overlay.className = "nav-link";
-    col_overlay.className = "overlay-types d-none";
-    ui_icons.className = "nav-link";
-    col_icons.className = "icons-types d-none";
-    col_pets.className = "pets-types";
-  }
+/*Upload by device*/
+var loadFile = function(event) {
+	var image = document.getElementById('avatar-holder');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+/*Upload by URL*/
+function avatarurl(val) {
+warning = document.getElementById("avatar-upload-url");
+extra = document.getElementById("avatar-upload-warning");
+if(check(val)){
+console.log("Valid image, processing...")
+warning.style.border = "2px solid yellow";
+document.getElementById("avatar-holder").src = val;
+warning.style.border = "2px solid green";
+weblog("success", "Successfully set the given image URL as frame avatar.")
+} else {
+console.error("invalid image, couldn't continue.");
+warning.style.border = "2px solid red"
 }
+if(val.includes(".gif")){
+    console.warn("Unsupported image type GIF (animated) detected.")
+    extra.style.display = "initial"
+    extra.innerText = "Not supporting GIFs, you still can download the frame in png format."
+  } else {extra.style.display = "none"}
+}
+const check = (url) => {
+  if (typeof url !== 'string') {
+    return false;
+  }
+  return (url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp|webp|svg)(\?(.*))?$/gmi) !== null);
+}
+/*Loader*/
+var load;
+function loader() {
+  load = setTimeout(loaded, 3000);
+}
+function loaded() {
+  document.getElementById("spinner").style.display = "none";
+  document.getElementById("spinner-parent").style.display = "none";
+  document.getElementById("content-header").style.opacity = "1";
+  document.getElementById("content-body").style.opacity = "1";
+}
+/*Tabs Handler*/
+function newtab(evt, tabname) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabname).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+/*Open Tab set as Default*/
+document.getElementById("defaultOpen").click();
