@@ -1,8 +1,3 @@
-/*Date Functions*/
-var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var dateTime = date+' '+time;
 /*Logs & Logs Counter Elements*/
 var logs = document.getElementById("logs-ping");
 var logs_counter = document.getElementById("logs-ping-counter");
@@ -17,19 +12,6 @@ function ping_new() {
         if(logs_counter.value > 99) { logs_counter.innerText = "99+" } else {
         logs_counter.innerText = Number(logs_counter.innerText) + 1;
         }
-}
-/*Console and Tab Error/Success Logging*/
-function weblog(type, msg){
-var log = document.getElementById("error-log");
-if(type == "error") {
-log.innerHTML = "<hr><p class='text-danger sm-t'>[ "+dateTime+" ] <i class='fa-solid fa-bug'></i> "+ msg +"<p>";
-console.error(msg);
-ping_new();
-  }
-if(type == "success") {
-log.innerHTML = "<hr><p class='text-success sm-t'>[ "+dateTime+" ] <i class='fa-solid fa-bug-slash'></i> "+ msg +"<p>";
-console.info(msg);
-  }
 }
 /*Download Button, Dom2Image*/
 $("#btn_dwl").on('click', function () {
@@ -77,10 +59,18 @@ inverted.innerText = "White";
        }
 }
 /*Upload by device*/
-var loadFile = function(event) {
-	var image = document.getElementById('avatar-holder');
-	image.src = URL.createObjectURL(event.target.files[0]);
-};
+function setholder(input, holder) {
+ if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+                    $(holder)
+                        .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 /*Upload by URL*/
 function avatarurl(val) {
 warning = document.getElementById("avatar-upload-url");
