@@ -50,8 +50,14 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>-->
 <!-- JQuery v3.6.0 Minified -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!-- Handler -->
+<!-- Handlers -->
 <script>
+/*Timeset*/
+/*Date Functions*/
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
 /*Frame Preview Error Handlers*/
 function handler(type) {
 if(type == "avatar_invalid") {
@@ -60,9 +66,25 @@ if(type == "avatar_invalid") {
 if(type == "overlay_correct") { weblog("success", "Successfully loaded the selected overlay."); }
 if(type == "icon_correct") { weblog("success", "Successfully loaded the selected icon.") }
 }
+/*Console and Tab Error/Success Logging*/
+function weblog(type, msg){
+var log = document.getElementById("error-log");
+if(type == "error") {
+log.innerHTML = "<hr><p class='text-danger sm-t'>[ "+dateTime+" ] <i class='fa-solid fa-bug'></i> "+ msg +"<p>";
+console.error(msg);
+ping_new();
+  }
+if(type == "success") {
+log.innerHTML = "<hr><p class='text-success sm-t'>[ "+dateTime+" ] <i class='fa-solid fa-bug-slash'></i> "+ msg +"<p>";
+console.info(msg);
+  }
+}
 </script>
+<!-- Adsense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5711390134813679"
+     crossorigin="anonymous"></script>
 <!-- Import Styling -->
-<link rel="stylesheet" href="./assets/css/style.css?v=5">
+<link rel="stylesheet" href="./assets/css/style.css?v=6.1">
 <!-- No Script -->
 <noscript>Your browser does not support Javascript or has it blocked for this page, you may face lot of errors due to this, please enable it!</noscript>
 </head>
@@ -133,7 +155,7 @@ if(type == "icon_correct") { weblog("success", "Successfully loaded the selected
   <h5><i class="fa-solid fa-palette"></i> Overlays</h5>
   
  <div id="overlay-settings" style="display: none;"> 
-<h6><i class="fa-solid fa-palette"></i> Overlay Color <span class="sm-t text-muted">Hue color!</span></h6>
+<h6><i class="fa-solid fa-paint-roller"></i> Overlay Color <span class="sm-t text-muted">Hue color!</span></h6>
 <div class="slider-container">
   <input type="range" min="0" max="360" value="0" class="slider" id="range-hue" oninput="range(this.id)">
 </div>
@@ -211,7 +233,42 @@ if(type == "icon_correct") { weblog("success", "Successfully loaded the selected
 <img id="none" width="60px" src="https://i.imgur.com/ayFFzNr.png" data-source="https://i.imgur.com/ayFFzNr.png" alt="Icon" onclick="select('icon', this.id, this.getAttribute('data-source'));">
   </div>
   
-  <div class="option d-inline-block">
+  <div class="upload d-inline-block">
+<img src="https://i.imgur.com/BFquThP.png" id="upload-button" class="bg-primary" alt="Upload" width="60px" data-toggle="modal" data-target="#upload-icon">
+  </div>
+  
+<!-- Modal -->
+<div class="modal fade" id="upload-icon" tabindex="-1" role="dialog" aria-labelledby="upload-icon-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="upload-icon-modal-label"><i class="fa-solid fa-upload"></i> Upload Icon</h5>
+  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+  </button>
+      </div>
+      <div class="modal-body">
+<p class="sm-t text-muted">Upload your own Icon, recommended minimum size is 128x128, recommended format is PNG (transparent)</p>
+
+<div class="alert alert-primary alert-dismissible fade show sm-t" role="alert">
+  <strong>Hey there!</strong> Just letting you know that the 'Invert' button may not work properly with custom icons.
+  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+  </button>
+</div>
+
+<p class="sm-t mb-0">Device Upload</p>
+<input type="file"  accept="image/*" name="image" id="fileicon"  onchange="setholder(this, '#icon-holder')" style="display: none;">
+<p><label for="fileicon" style="cursor: pointer;" class="btn btn-dark sm-t mb-0"><i class="fa-solid fa-upload"></i> Upload From Device</label></p>
+<p class="sm-t mb-0">Reset Icon</p>
+<a class="btn btn-danger sm-t" id="reset-icon" data-source="https://i.imgur.com/ayFFzNr.png" onclick="select('icon', this.id, this.getAttribute('data-source'));">Click to reset!</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="option d-inline-block">
 <img id="developer" width="60px" src="https://i.imgur.com/t93w1Np.png" data-source="https://i.imgur.com/t93w1Np.png" alt="Icon" onclick="select('icon', this.id, this.getAttribute('data-source'));">
   </div>
   
@@ -334,7 +391,7 @@ if(type == "icon_correct") { weblog("success", "Successfully loaded the selected
   <hr/>
   <span>or</span>
 </div>
-<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+<input type="file"  accept="image/*" name="image" id="file"  onchange="setholder(this, '#avatar-holder')" style="display: none;">
 <p><label for="file" style="cursor: pointer;" class="btn btn-dark"><i class="fa-solid fa-upload"></i> Upload From Device <span class="text-warning sm-t">(recommended)</span></label></p>
 
 <h6><i class="fa-solid fa-toolbox"></i> Extra Settings</h6>
@@ -362,7 +419,6 @@ if(type == "icon_correct") { weblog("success", "Successfully loaded the selected
 </div>
 </div>
   </div> <!-- /second -->
- 
 </div>
 </div>
 <!-- Development & Design GET Keywords -->
@@ -384,7 +440,7 @@ All rights reserved.</a>
 </footer>
 
 <!-- CloudTeam Frames Scripting -->
-<script src="./assets/js/script.js?v=5"></script>
+<script src="./assets/js/script.js?v=4.1"></script>
 <!-- DOM to image v2.6.0 Minified -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Bootstrap JS -->
