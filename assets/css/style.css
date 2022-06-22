@@ -100,15 +100,6 @@ margin-bottom: 5px;
   font-size: 15px;
 }
 
-.img3 {
-width: 70px;
-display: block;
-top: 380px;
-left: 215px;
-align-items: center;
-justify-content: center;
-}
-
 .custom-ui {
 margin-bottom: 165px;
 }
@@ -119,7 +110,7 @@ min-height: 500px;
 width: 500px;
 height: 500px;
 position: relative;
-margin: 10px;
+margin: 0px !important;
 }
 
 .img1 { /*avatar*/
@@ -135,6 +126,30 @@ margin: 10px;
 .img3 {  /*icon*/
       position:absolute;
       z-index: 2;
+}
+.img3 {
+    width: 70px;
+    display: block;
+    top: 390px;
+    left: 222.5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.img1, .img2 { /* Height/Width force resizing. */
+    min-width: 515px;
+    max-width: 515px;
+    min-height: 515px;
+    max-height: 515px;
+    width: 515px;
+    height: 515px;
+}
+
+.upload img {
+cursor: pointer;
+transition: 0.3s;
+margin-right: 2px;
+border-radius: 4px;
 }
 
 .tab-section {
