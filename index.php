@@ -285,6 +285,12 @@
                      <div class="option d-inline-block">
                         <img id="verified" width="60px" src="https://i.imgur.com/ZNof9NC.png" data-source="https://i.imgur.com/ZNof9NC.png" alt="Icon" onclick="select('icon', this.id, this.getAttribute('data-source'));">
                      </div>
+                     <div class="option d-inline-block">
+                        <img id="basement" width="60px" src="https://i.imgur.com/PSRklhw.png" data-source="https://i.imgur.com/PSRklhw.png" alt="Icon" onclick="select('icon', this.id, this.getAttribute('data-source'));">
+                     </div>
+                     <div class="option d-inline-block">
+                        <img id="cloudteam_icon" width="60px" src="https://i.imgur.com/yZygeok.png" data-source="https://i.imgur.com/yZygeok.png" alt="Icon" onclick="select('icon', this.id, this.getAttribute('data-source'));">
+                     </div>
                      <div class="hrdivider">
                         <hr/>
                         <span>Social Media</span>
@@ -303,6 +309,9 @@
                      </div>
                      <div class="option d-inline-block">
                         <img id="social-twitch-large" width="60px" src="https://i.imgur.com/ZJusAvl.png" data-source="https://i.imgur.com/ZJusAvl.png" alt="Icon" onclick="select('icon', this.id, this.getAttribute('data-source'));">
+                     </div>
+                     <div class="option d-inline-block">
+                        <img id="social-gluo-large" width="60px" src="https://i.imgur.com/9JIRTla.png" data-source="https://i.imgur.com/9JIRTla.png" alt="Icon" onclick="select('icon', this.id, this.getAttribute('data-source'));">
                      </div>
                   </div>
                </div>
