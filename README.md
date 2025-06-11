@@ -1,4 +1,16 @@
+ <p align="center">
+<h3 align="center">Discontinued!</h3>
+Hey, this has been discontinued around ~2021 when CloudTeam has closed, I'm now archiving it and making it MIT (or WTFPL license aka Do What the Frick You Want Public License), do as you please with the source!
+Discord added Avatar Decorations so, this makes Frames more useless, at least Discord-wise, as they are essentially the same.
+It may be useful for other platforms tho, since not all platforms offer avatar decorations, so you may want to continue it, tho I evolved a lot as a developer and I think this source quite sucks.
 
+Anyway, wishing you a good day.
+--------------------------------------------
+</p>
+<br/>
+<br/>
+<br/>
+<br/>
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
